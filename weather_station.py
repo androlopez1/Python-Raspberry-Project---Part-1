@@ -8,13 +8,13 @@ import lcddriver
 
 
 #display = lcddriver.lcd()
-with open("data_oficina.csv", "a") as log:
+with open("file.csv", "a") as log: 
 
 	while True:
 
    	   humidity, temperature = Adafruit_DHT.read_retry(11, 17)
    	   print 'Temp: {0:0.1f} C  Humidity: {1:0.1f} %'.format(temperature, humidity)
-#   	   display.lcd_display_string("Temperatura: "+str(temperature), 1)
-#   	   display.lcd_display_string("Humedad: "+str(humidity), 2)
+   	   display.lcd_display_string("Temperature: "+str(temperature), 1)
+   	   display.lcd_display_string("Humidity: "+str(humidity), 2)
 	   log.write("{0},{1},{2}\n".format(strftime("%Y-%m-%d %H:%M:%S"),str(temperature),str(humidity)))
-           sleep(60)
+           sleep(60) ## Read each 60 secs
